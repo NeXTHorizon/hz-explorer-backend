@@ -1,0 +1,92 @@
+CREATE TABLE blockdata (
+nextblock TEXT,
+generator TEXT,
+generatorrs TEXT,
+transactions TEXT,
+timestamp NUMERIC,
+numberoftransactions NUMERIC,
+previousblock TEXT,
+payloadlength NUMERIC,
+payloadhash TEXT,
+basetarget NUMERIC,
+version NUMERIC,
+totalamount NUMERIC,
+previousblockhash TEXT,
+height NUMERIC,
+blocksignature TEXT,
+totalfee NUMERIC,
+generationsignature TEXT,
+UNIQUE (blocksignature, timestamp));
+
+
+CREATE TABLE transactions (
+id TEXT,
+sender TEXT,
+senderrs TEXT,
+fee NUMERIC,
+type NUMERIC,
+subtype NUMERIC,
+amount NUMERIC,
+timestamp NUMERIC,
+confirmations NUMERIC,
+pubkey TEXT,
+block TEXT,
+deadline NUMERIC,
+signature TEXT,
+recipient TEXT,
+recipientrs TEXT,
+fullhash TEXT,
+signaturehash TEXT,
+attachment TEXT,
+UNIQUE (id));
+
+
+CREATE TABLE messages (
+tx TEXT,
+message TEXT,
+UNIQUE(tx));
+
+
+CREATE TABLE aliases (
+tx TEXT,
+alias TEXT,
+uri TEXT,
+UNIQUE (alias));
+
+
+CREATE TABLE assets (
+asset TEXT,
+account TEXT,
+accountrs TEXT,
+name TEXT,
+description TEXT,
+quantity NUMERIC,
+decimals NUMERIC,
+trades NUMERIC,
+UNIQUE(asset));
+
+CREATE TABLE balances (
+id TEXT,
+rs TEXT,
+balance NUMERIC,
+UNIQUE(id));
+
+CREATE TABLE fundstats (
+timestamp NUMERIC,
+account_bounty NUMERIC,
+dev_bounty NUMERIC,
+node_bounty NUMERIC,
+giveaways NUMERIC,
+sold NUMERIC,
+dividends NUMERIC,
+nfd NUMERIC,
+accounts NUMERIC,
+blocks NUMERIC,
+UNIQUE(timestamp));
+
+CREATE INDEX tx_recipient ON transactions (recipient);
+CREATE INDEX tx_recipients ON transactions (recipientrs);
+CREATE INDEX tx_sender ON transactions (sender);
+CREATE INDEX block_generator ON blockdata (generator);
+CREATE INDEX block_totalfee ON blockdata (totalfee);
+
