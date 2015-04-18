@@ -1,12 +1,5 @@
 #!/usr/bin/env python
 
-# ----------------------------------------------------------------------------
-# carebeer at freenode wrote this file. As long as you retain this notice you
-# can do whatever you want with this stuff. IF you think this stuff is worth it,
-# you can send me NHZ, 15175909104401060281 or just say hi at freenode.
-# ----------------------------------------------------------------------------
-
-
 import json
 import urllib2
 import sqlite3
